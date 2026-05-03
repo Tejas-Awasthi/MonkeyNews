@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 // https://newsapi.org/v2/top-headlines?country=us&apiKey=...
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <App />
-  </StrictMode>,
+  // </StrictMode>,
 )
