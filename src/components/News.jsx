@@ -7,18 +7,41 @@ export class News extends Component {
 	constructor() {
 		super();
 		this.state = {
-			news: []
+			news: [],
+			totalResults: 0,
+			currentPageNo: 1,
+			pageSize: 10,
+			totalNews: 0,
+			totalLoaded: 0
 		}
 	}
-	async componentDidMount() {
-		let url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=11&page=1&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`
+	fetchNews = async (pageSize, currentPageNo) => {
+		let url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=${pageSize}&page=${currentPageNo}&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`
 		let data = await fetch(url)
 		let jsonData = await data.json()
-		console.log(jsonData.articles)
-		this.setState({ news: jsonData.articles })
+		console.log(jsonData)
+		let totalResults = jsonData.totalResults
+		let totalNews = jsonData.articles.length
+		this.setState({ news: jsonData.articles, totalResults: totalResults, totalNews: totalNews })
+	}
+	async componentDidMount() {
+		const { pageSize, currentPageNo } = this.state
+		await this.fetchNews(pageSize, currentPageNo)
+		const { totalNews } = this.state
+		this.setState({ totalLoaded: totalNews})
+	}
+	
+	next = async () => {
+		const { pageSize, currentPageNo, totalResults, totalLoaded, totalNews } = this.state
+		this.setState({ currentPageNo: currentPageNo + 1 })
+		await this.fetchNews(pageSize, currentPageNo + 1)
+		console.log(currentPageNo)
+		this.setState((prev)=>({totalLoaded: prev.totalLoaded + totalNews}))
 	}
 	render() {
-		const { news } = this.state
+		const { news, totalResults, currentPageNo, pageSize, totalNews, totalLoaded } = this.state
+		const next = this.next
+		const fetchNews = this.fetchNews
 		return (
 			<section className="text-gray-600 body-font">
 				<div className="container mx-auto relative isolate px-6 py-24 lg:px-8">
@@ -37,7 +60,7 @@ export class News extends Component {
 						</div>
 					</div>
 				</div>
-				<Pagination />
+				<Pagination nextFunc={next} totalNews={totalNews} totalResults={totalResults} pageSize={pageSize} currentPage={currentPageNo} totalLoaded={totalLoaded} />
 			</section>
 		)
 	}
