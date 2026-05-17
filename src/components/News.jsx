@@ -12,8 +12,7 @@ export class News extends Component {
 			totalNews: 0,
 			query: "",
 			currentPageNo: 1,
-			fetchNews: this.props.fetchNews,
-			totalLoaded: 0
+			fetchNews: this.props.fetchNews
 		};
 	}
 	search = async (query) => {
@@ -24,13 +23,12 @@ export class News extends Component {
 			currentPageNo: 1
 		});
 
-		const totalLoaded = await this.state.fetchNews(
+		await this.state.fetchNews(
 			query,
 			pageSize,
 			1,
 			undefined
 		);
-		this.setState({ totalLoaded: totalLoaded })
 	};
 
 	next = async () => {
@@ -39,9 +37,8 @@ export class News extends Component {
 		const currentCategory = this.props.category;
 
 		try {
-			const totalLoaded = undefined;
 			if (currentCategory) {
-				const totalLoaded = await this.state.fetchNews(
+				await this.state.fetchNews(
 					undefined,
 					pageSize,
 					currentPageNo + 1,
@@ -49,7 +46,7 @@ export class News extends Component {
 				);
 			}
 			else {
-				const totalLoaded = await this.state.fetchNews(
+				await this.state.fetchNews(
 					query,
 					pageSize,
 					currentPageNo + 1,
@@ -58,8 +55,7 @@ export class News extends Component {
 			}
 
 			this.setState({
-				currentPageNo: currentPageNo + 1,
-				totalLoaded: totalLoaded
+				currentPageNo: currentPageNo + 1
 			});
 		} catch ({ message }) {
 			console.log(message);
@@ -72,9 +68,8 @@ export class News extends Component {
 		const currentCategory = this.props.category;
 
 		try {
-			const totalLoaded = undefined;
 			if (currentCategory) {
-				const totalLoaded = await this.state.fetchNews(
+				await this.state.fetchNews(
 					undefined,
 					pageSize,
 					currentPageNo - 1,
@@ -82,7 +77,7 @@ export class News extends Component {
 				);
 			}
 			else {
-				const totalLoaded = await this.state.fetchNews(
+				await this.state.fetchNews(
 					query,
 					pageSize,
 					currentPageNo - 1,
@@ -91,15 +86,14 @@ export class News extends Component {
 			}
 
 			this.setState({
-				currentPageNo: currentPageNo - 1,
-				totalLoaded: totalLoaded
+				currentPageNo: currentPageNo - 1
 			});
 		} catch ({ message }) {
 			console.log(message);
 		}
 	};
 	render() {
-		const { news, fetchNews, pageSize, totalNews, currentPageNo, totalLoaded } = this.state;
+		const { news, fetchNews, pageSize, totalNews, currentPageNo } = this.state;
 		const { totalResults } = this.props
 
 		const loading = this.props.loading
@@ -115,7 +109,7 @@ export class News extends Component {
 							<div style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }} className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"></div>
 						</div>
 						{this.props.news.map((item) => {
-							return <NewsItem key={item.url} newsUrl={item.url} imgUrl={item.urlToImage ? item.urlToImage : null} title={item.title ? item.title : ""} desc={item.description ? item.description : ""} />;
+							return <NewsItem key={item.url} time={item.publishedAt} newsUrl={item.url} imgUrl={item.urlToImage ? item.urlToImage : null} title={item.title ? item.title : ""} desc={item.description ? item.description : ""} />;
 						})}
 
 						<div aria-hidden="true" className="absolute h-[stretch] inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
@@ -130,7 +124,6 @@ export class News extends Component {
 					totalResults={totalResults}
 					pageSize={pageSize}
 					currentPage={currentPageNo}
-					totalLoaded={totalLoaded}
 				/>
 			</section>
 		);

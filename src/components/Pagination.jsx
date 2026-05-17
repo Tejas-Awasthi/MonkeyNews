@@ -7,7 +7,7 @@ export class Pagination extends Component {
         // const totalResults = this.props.totalResults
         // const pageSize = this.props.pageSize
         // const currentPage = this.props.currentPage
-        const { totalResults, pageSize, currentPage, totalNews, totalLoaded } = this.props
+        const { totalResults, pageSize, currentPage, totalNews } = this.props
         const totalPages = Math.ceil(totalResults / pageSize)
 
         return (

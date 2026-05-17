@@ -20,19 +20,24 @@ import {
   FingerPrintIcon,
   SquaresPlusIcon,
   XMarkIcon,
+  FilmIcon,
+  NewspaperIcon,
+  HeartIcon,
+  BeakerIcon,
+  CpuChipIcon
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import "./Navbar.css"
 
 
 const navLinks = [
-  { name: 'Business', category: 'business', href: '#', icon: ChartPieIcon },
-  { name: 'Entertainment', category: 'entertainment', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'General', category: 'general', href: '#', icon: FingerPrintIcon },
-  { name: 'Health', category: 'health', href: '#', icon: SquaresPlusIcon },
-  { name: 'Science', category: 'science', href: '#', icon: ArrowPathIcon },
-  { name: 'Sports', category: 'sports', href: '#', icon: ArrowPathIcon },
-  { name: 'Technology', category: 'technology', href: '#', icon: ArrowPathIcon },
+  { name: 'Business', category: 'business', icon: ChartPieIcon },
+  { name: 'Entertainment', category: 'entertainment', icon: FilmIcon },
+  { name: 'General', category: 'general', icon: NewspaperIcon },
+  { name: 'Health', category: 'health', icon: HeartIcon },
+  { name: 'Science', category: 'science', icon: BeakerIcon },
+  { name: 'Sports', category: 'sports', icon: ArrowPathIcon },
+  { name: 'Technology', category: 'technology', icon: CpuChipIcon },
 ]
 
 export class Navbar extends Component {
@@ -114,21 +119,8 @@ export class Navbar extends Component {
                 </>
               )}
             </Popover>
-
-            <a href="#" className="text-sm/6 font-semibold text-white">
-              Features
-            </a>
-            <a href="#" className="text-sm/6 font-semibold text-white">
-              Marketplace
-            </a>
-            <a href="#" className="text-sm/6 font-semibold text-white">
-              Company
-            </a>
           </PopoverGroup>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm/6 font-semibold text-white">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
           </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={() => this.setState({ mobileMenuOpen: false })} className="lg:hidden">
@@ -159,7 +151,7 @@ export class Navbar extends Component {
                     {({ close }) => (
                       <>
                         <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-white hover:bg-white/5">
-                          Product
+                          Categories
                           <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                         </DisclosureButton>
                         <DisclosurePanel className="mt-2 space-y-2">
@@ -177,32 +169,6 @@ export class Navbar extends Component {
                       </>
                     )}
                   </Disclosure>
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5"
-                  >
-                    Features
-                  </a>
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5"
-                  >
-                    Marketplace
-                  </a>
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5"
-                  >
-                    Company
-                  </a>
-                </div>
-                <div className="py-6">
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-white/5"
-                  >
-                    Log in
-                  </a>
                 </div>
               </div>
             </div>
