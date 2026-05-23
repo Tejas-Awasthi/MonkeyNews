@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 
 export class Modal extends Component {
 	constructor(props) {
@@ -8,6 +8,7 @@ export class Modal extends Component {
 			opacity: 100,
 		};
 	}
+	
 	timeoutOfModal = () => {
 		setTimeout(() => {
 			this.hideModal();
@@ -19,8 +20,10 @@ export class Modal extends Component {
 			this.setState({ showModal: false });
 		}, 250);
 	};
-	render() {
+	componentDidMount(){
 		this.timeoutOfModal();
+	}
+	render() {
 		return (
 			<>
 				{this.state.showModal && (
