@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-export class NewsItem extends Component {
-  render() {
-    let { newsUrl, imgUrl, title, desc, time } = this.props;
+const NewsItem = (props)=> {
+    let { newsUrl, imgUrl, title, desc, time } = props;
     return (
       <div className="p-4 md:w-1/3">
         <div className="h-full border-2 bg-white border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -23,7 +22,6 @@ export class NewsItem extends Component {
         </div>
       </div>
     )
-  }
 }
 
 export default NewsItem

@@ -6,6 +6,7 @@ import { ArrowPathIcon, Bars3Icon, ChartPieIcon, CursorArrowRaysIcon, FingerPrin
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import "./Navbar.css";
 
+
 const navLinks = [
 	{ name: "Business", category: "business", icon: ChartPieIcon },
 	{ name: "Entertainment", category: "entertainment", icon: FilmIcon },
@@ -16,16 +17,11 @@ const navLinks = [
 	{ name: "Technology", category: "technology", icon: CpuChipIcon },
 ];
 
-export class Navbar extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			mobileMenuOpen: false,
-			scrolled: window.scrollY > 5,
-			fetchNews: this.props.fetchNews,
-		};
-	}
-	onCategoryClick = (category) => {
+const Navbar = (props) => {
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+	const [scrolled, setScrolled] = useState(window.scrollY > 5)
+	const {fetchNews} = props
+	const onCategoryClick = (category) => {
 		this.props.category(category);
 	};
 	handleScroll = () => {
@@ -37,7 +33,6 @@ export class Navbar extends Component {
   componentWillUnmount(){
     window.removeEventListener("scroll", this.handleScroll)
   }
-	render() {
 		const { mobileMenuOpen, scrolled } = this.state;
 
 		return (
@@ -150,6 +145,5 @@ export class Navbar extends Component {
 			</header>
 		);
 	}
-}
 
 export default Navbar;
