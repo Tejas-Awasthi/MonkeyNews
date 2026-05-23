@@ -28,14 +28,11 @@ const Modal = (props) => {
   bg-red-900 border border-slate-500 rounded-full 
   py-2 px-4 text-white`}
 				>
-					{/* Icon */}
 					<svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
 						<path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM167 167c-9.4 9.4-9.4 24.6 0 33.9l55 55-55 55c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l55-55 55 55c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-55-55 55-55c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-55 55-55-55c-9.4-9.4-24.6-9.4-33.9 0z" />
 					</svg>
-					{/* Message */}
 					<div className="flex-1 text-sm sm:text-base leading-snug">{props.message}</div>
 
-					{/* Close Button */}
 					<button
 						className="shrink-0 ml-auto cursor-pointer hover:bg-red-800 rounded-full p-2"
 						onClick={() => {
