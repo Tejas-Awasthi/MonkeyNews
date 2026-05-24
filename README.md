@@ -21,7 +21,7 @@ A modern news reader built with React and Vite. Browse top headlines by category
 ### 1. Clone and install
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Tejas-Awasthi/MonkeyNews
 cd MonkeyNews
 npm install
 ```
