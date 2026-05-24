@@ -11,7 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-.env
 todo.md
 
 # Editor directories and files
@@ -24,5 +23,8 @@ todo.md
 *.njsproj
 *.sln
 *.sw?
+.gitignore
+.gitattributes
+LICENSE
 
 *.py

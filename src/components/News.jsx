@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import Modal from "./Modal";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-function usePrevious(value) {
+const usePrevious = (value) => {
     const ref = useRef();
     useEffect(() => {
         ref.current = value;
