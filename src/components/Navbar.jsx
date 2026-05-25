@@ -5,7 +5,6 @@ import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Pop
 import { ArrowPathIcon, Bars3Icon, ChartPieIcon, CursorArrowRaysIcon, FingerPrintIcon, SquaresPlusIcon, XMarkIcon, FilmIcon, NewspaperIcon, HeartIcon, BeakerIcon, CpuChipIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 
-
 const navLinks = [
 	{ name: "Business", category: "business", icon: ChartPieIcon },
 	{ name: "Entertainment", category: "entertainment", icon: FilmIcon },
@@ -17,22 +16,22 @@ const navLinks = [
 ];
 
 const Navbar = (props) => {
-	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-	const [scrolled, setScrolled] = useState(window.scrollY > 5)
-	const { fetchNews } = props
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [scrolled, setScrolled] = useState(window.scrollY > 5);
+	const { fetchNews } = props;
 	const onCategoryClick = (category) => {
 		props.category(category);
 	};
 	const handleScroll = () => {
-		window.scrollY > 5 ? setScrolled(true) : setScrolled(false)
+		window.scrollY > 5 ? setScrolled(true) : setScrolled(false);
 	};
 	useEffect(() => {
-		window.addEventListener("scroll", handleScroll)
+		window.addEventListener("scroll", handleScroll);
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll)
-		}
-	}, [])
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
 	return (
 		<header className={`fixed isolate inset-x-0 top-0 z-50 transition-all ease-in-out duration-250 ${scrolled ? "bg-gray-900/80 backdrop-blur-xl" : ""}`}>
@@ -127,7 +126,6 @@ const Navbar = (props) => {
 															setMobileMenuOpen(false);
 														}}
 														className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-white hover:bg-white/5"
-													
 													>
 														{item.name}
 													</button>
@@ -143,6 +141,6 @@ const Navbar = (props) => {
 			</Dialog>
 		</header>
 	);
-}
+};
 
 export default Navbar;

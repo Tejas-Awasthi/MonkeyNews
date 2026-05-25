@@ -109,10 +109,10 @@ const News = (props) => {
 				</InfiniteScroll>
 
 				{!hasMore && (
-					<div class="flex items-center text-center my-4">
-						<div class="grow border-t border-gray-300"></div>
-						<span class="shrink mx-4 text-gray-200 text-base">You've reached the end</span>
-						<div class="grow border-t border-gray-300"></div>
+					<div className="flex items-center text-center my-4">
+						<div className="grow border-t border-gray-300"></div>
+						<span className="shrink mx-4 text-gray-200 text-base">You've reached the end</span>
+						<div className="grow border-t border-gray-300"></div>
 					</div>
 				)}
 
